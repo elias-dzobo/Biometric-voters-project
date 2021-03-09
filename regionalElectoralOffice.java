@@ -42,6 +42,16 @@ public class regionalElectoralOffice {
         this.regionName = regionName;
     }
     /**
+     * Count method to count the number of votes in the region.
+     * @param results
+     * @return
+     */
+    public static int regionCount(regionalElectoralOffice results){
+        int count=0;
+        count++;
+        return count;
+    }
+    /**
      * To string method
      * @return the regionID and name.
      */
