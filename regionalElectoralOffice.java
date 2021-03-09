@@ -41,5 +41,12 @@ public class regionalElectoralOffice {
         this.regionalElectoralOfficeID = regionalElectoralOfficeID;
         this.regionName = regionName;
     }
+    /**
+     * To string method
+     * @return the regionID and name.
+     */
+    public String toString(){
+        return "[ Regional Electoral ID: "+getRegionalElectoralOfficeID()+ "Region Name: "+getRegionName()+ "]";  
+    }
     
 }
