@@ -57,10 +57,11 @@ public class regionalElectoralOffice {
         } else {
             votes.put(region, 1);
         }
-    }
+    }public void Counter(){
+     for ( Object e:votes.keySet() ){
+         System.out.println(votes.values());
+     }
 
-    public void Counter(){
-        System.out.println(votes);
     }
 
     public void maxCount() {
@@ -78,17 +79,17 @@ public class regionalElectoralOffice {
 
     }
     public void minCount() {
-        int maxValue = (Collections.max(votes.values()));
+        int minValue = (Collections.max(votes.values()));
 
-        int maxValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
-        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName);
+        int minValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
+        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName);
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
-            if (entry.getValue()==maxValueInMap) {
-                winner = entry.getKey();     // Print the key with max value
+            if (entry.getValue()==minValueInMap) {
+                last = entry.getKey();     // Print the key with max value
             }
         }
 
-        System.out.println("Last place: " + winner.getdistrictName() + ":" + votes.get(winner) + " votes");
+        System.out.println("Last place: " + last.getdistrictName() + ":" + votes.get(last) + " votes");
 
     }
 
