@@ -70,13 +70,14 @@ public class Voter extends Person {
     }
 
     // 
-    public void vote() {
+    public void vote(Candidate prez, PollingStation station) {
         // does not allow users to vote twice
         if (hasVoted) {
             System.out.println("Voters are not allowed to vote more than once");
         } else  {
             // adds users vote to general ballot count variable
             count = count + 1;
+            station.registerVote(prez);
             hasVoted = true; // chnages voting status
 
         }

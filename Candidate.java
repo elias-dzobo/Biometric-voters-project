@@ -4,6 +4,10 @@ public class Candidate extends Person{
     String position;
     int id;  // position on ballot slip
 
+    Candidate() {
+        
+    }
+
 
     Candidate(String party, String position, int id){
         super();
