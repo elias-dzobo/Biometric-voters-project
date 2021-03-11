@@ -2,11 +2,13 @@
 public class DistrictElectoralOffice {
 	private int districtID;
 	private String districtName;
+	private String region;
 	
 	// constructor
-	public DistrictElectoralOffice(int districtID, String districtName) {
+	public DistrictElectoralOffice(int districtID, String districtName, String region) {
 		this.districtID = districtID;
 		this.districtName = districtName;
+		this.region = region;
 	}
 	
 	// accessor method
@@ -17,6 +19,11 @@ public class DistrictElectoralOffice {
 	public String getdistrictName() {
 		return this.districtName;
 	}
+
+	public String getRegion(){
+		return this.region;
+	}
+
 	
 	// mutator method
 	@SuppressWarnings("unused")
@@ -27,6 +34,11 @@ public class DistrictElectoralOffice {
 	private void setdistrictName(String pdistrictName){
 		this.districtName = pdistrictName;
 		}
+
+	@SuppressWarnings("unused")
+	private void setRegion(String r){
+		this.region = r;
+	}
 	
 	// toString
 	public String toString() {

@@ -20,21 +20,37 @@ class PollingStation {
         this.name = name;
     }
 
+    
+    /** 
+     * @return int
+     */
     // Getter and Setter methods
 
     public int getID(){
         return this.pollingID;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDistrict(){
         return this.District;
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getName(){
         return this.name;
     }
 
+    
+    /** 
+     * @param prez
+     */
     public void registerVote(Candidate prez) {
         if (votes.containsKey(prez)) {
             int curVotes = votes.get(prez);
@@ -66,7 +82,7 @@ class PollingStation {
 
 
     public void minCount() {
-        int maxValue = (Collections.max(votes.values()));
+        int maxValue = (Collections.min(votes.values()));
 
         int maxValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
         Candidate winner = new Candidate();
