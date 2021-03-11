@@ -1,4 +1,8 @@
 import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+
 
 public class National extends regionalElectoralOffice   {
     String NationName;
@@ -48,6 +52,20 @@ public void setNationName(String NationName) {
             System.out.println("Last place: " + last.getRegionName()+" votes");
     
         }
+        public void writeFile(){
+            try{
+                FileWriter writer =  new FileWriter(votenum);
+                for(Object e : votes.values()){
+                    writer.write(String(votes.values));
+                }
+
+            }
+            catch(FileNotFoundException e){
+                System.out.println("File cannot be found");
+            }
+
+        }
+
 
       
 
