@@ -6,13 +6,17 @@ import java.util.*;
  */
 
 public class regionalElectoralOffice {
-    private int regionalElectoralOfficeID;
-    private String regionName;
+     int regionalElectoralOfficeID;
+     String regionName;
 
 
     // Hashmap Regional Level 
     HashMap<DistrictElectoralOffice, Integer> votes = new HashMap<DistrictElectoralOffice, Integer>();
     
+     regionalElectoralOffice(int regionalElectoralOfficeID, String regionName) {
+		this.regionalElectoralOfficeID = regionalElectoralOfficeID;
+		this.regionName = regionName;
+	}
     /**
      * @return regionalElectoralOfficeID
      */
@@ -37,14 +41,7 @@ public class regionalElectoralOffice {
     public void setRegionalElectoralOfficeID(int regionalElectoralOfficeID) {
         this.regionalElectoralOfficeID = regionalElectoralOfficeID;
     }
-    /**
-     * @param regionalElectoralOfficeID
-     * @param regionName
-     */
-    public regionalElectoralOffice(int regionalElectoralOfficeID, String regionName) {
-        this.regionalElectoralOfficeID = regionalElectoralOfficeID;
-        this.regionName = regionName;
-    }
+   
     /**
      * Count method to count the number of votes in the region.
      * @param regionn
