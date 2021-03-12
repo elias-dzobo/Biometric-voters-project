@@ -1,3 +1,5 @@
+package BiometricVotersSystem.src;
+
 public class Voter extends Person {
 
     // instance variables
