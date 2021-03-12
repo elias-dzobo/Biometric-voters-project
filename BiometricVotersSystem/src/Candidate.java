@@ -1,3 +1,5 @@
+package BiometricVotersSystem.src;
+
 public class Candidate extends Person{
     
     String politicalParty;
