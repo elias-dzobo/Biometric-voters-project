@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,20 +57,18 @@ public class National extends regionalElectoralOffice {
         }
 
         public void writeFile(){
+            PrintWriter pw=null;
             try{
-                FileWriter writer =  new FileWriter(votenum);
+                pw =  new PrintWriter("votes.txt");
                 for(Object e : votes.values()){
-                    writer.write(String(votes.values));
+                    pw.println();
                 }
-
+                pw.close();
             }
-            catch(FileNotFoundException e){
-                System.out.println("File cannot be found");
-            } catch (IOException e) {
-                e.printStackTrace();
+            catch(Exception e){
+                System.out.println(e.toString());
             }
-        } 
-
-
+             System.out.println("Printing completed");
+            }
 
 }
