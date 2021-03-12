@@ -1,3 +1,5 @@
+package BiometricVotersSystem.src;
+
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -93,12 +95,10 @@ class PollingStation {
         System.out.println("Last place: " + winner.getName() + ":" + votes.get(winner) + " votes");
 
     }
-<<<<<<< HEAD:BiometricVotersSystem/src/PollingStation.java
 
     public void forwardResults(DistrictElectoralOffice d1) {
         d1.collateResults(votes);
     }
-=======
     public void writeFile(){
         PrintWriter pw=null;
         try{
@@ -113,5 +113,4 @@ class PollingStation {
         }
          System.out.println("Printing completed");
         }
->>>>>>> c172357dea33f6cb13deb8eccbcdc56fcf0b0dc2:PollingStation.java
 }
