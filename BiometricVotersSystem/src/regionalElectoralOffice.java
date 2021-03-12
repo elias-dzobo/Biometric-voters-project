@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -7,10 +8,18 @@ import java.util.*;
 
 public class regionalElectoralOffice {
     private int regionalElectoralOfficeID;
-    private String regionName;
+     private String regionName;
 
-    private HashMap<Candidate, Integer> regionResults;
-    
+
+    // Hashmap Regional Level 
+    HashMap<DistrictElectoralOffice, Integer> votes = new HashMap<DistrictElectoralOffice, Integer>();
+
+  
+
+     regionalElectoralOffice(int regionalElectoralOfficeID, String regionName) {
+		this.regionalElectoralOfficeID = regionalElectoralOfficeID;
+		this.regionName = regionName;
+	}
     /**
      * @return regionalElectoralOfficeID
      */
@@ -22,10 +31,6 @@ public class regionalElectoralOffice {
      */
     public String getRegionName() {
         return regionName;
-    }
-
-    public HashMap<Candidate, Integer> getMap() {
-        return this.regionResults;
     }
     /**
      * @param regionName
@@ -39,15 +44,55 @@ public class regionalElectoralOffice {
     public void setRegionalElectoralOfficeID(int regionalElectoralOfficeID) {
         this.regionalElectoralOfficeID = regionalElectoralOfficeID;
     }
+   
     /**
-     * @param regionalElectoralOfficeID
-     * @param regionName
+     * Count method to count the number of votes in the region.
+     * @param region
+     * @return votes
      */
-    public regionalElectoralOffice(int regionalElectoralOfficeID, String regionName) {
-        this.regionalElectoralOfficeID = regionalElectoralOfficeID;
-        this.regionName = regionName;
+    public void regionalLevel(DistrictElectoralOffice region) {
+        if (votes.containsKey(region)) {
+            int curVotes = votes.get(region);
+            votes.replace(region, curVotes+1);
+        } else {
+            votes.put(region, 1);
+        }
+    }public void Counter(){
+     for ( Object e:votes.keySet() ){
+         System.out.println(votes.values());
+     }
+
     }
-    
+
+    public void maxCount() {
+        int maxValue = (Collections.max(votes.values()));
+
+        int maxValueInMap=(Collections.max(votes.values()));  // This will return max value in the Hashmap
+        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName);
+        for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
+            if (entry.getValue()==maxValueInMap) {
+                winner = entry.getKey();     // Print the key with max value
+            }
+        }
+
+        System.out.println("Winner: " + winner.getdistrictName() + ":" + votes.get(winner) + " votes");
+
+    }
+    public void minCount() {
+        int minValue = (Collections.max(votes.values()));
+
+        int minValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
+        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName);
+        for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
+            if (entry.getValue()==minValueInMap) {
+                last = entry.getKey();     // Print the key with max value
+            }
+        }
+
+        System.out.println("Last place: " + last.getdistrictName() + ":" + votes.get(last) + " votes");
+
+    }
+
     /**
      * To string method
      * @return the regionID and name.
@@ -55,23 +100,19 @@ public class regionalElectoralOffice {
     public String toString(){
         return "[ Regional Electoral ID: "+getRegionalElectoralOfficeID()+ "Region Name: "+getRegionName()+ "]";  
     }
-
-
-    public void collateDistrictResults(HashMap<Candidate, Integer> DistrictResults){
-        for (Map.Entry<Candidate, Integer> entry: DistrictResults.entrySet()) {
-            if (regionResults.containsKey(entry.getKey())) {
-                int a = entry.getValue();
-                regionResults.replace(entry.getKey(), entry.getValue()+a);
-            } else {
-                regionResults.put(entry.getKey(), entry.getValue());
+    public void writeFile(){
+        PrintWriter pw=null;
+        try{
+            pw =  new PrintWriter("votes.txt");
+            for(Object e : votes.values()){
+                pw.println();
             }
+            pw.close();
         }
-    }
-
-    public void Counter(){
-        System.out.println(this.getMap());
-    }
-
-    
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+         System.out.println("Printing completed");
+        }
     
 }
