@@ -1,3 +1,5 @@
+package BiometricVotersSystem.src;
+
 class Person {
 
     // instance variables
