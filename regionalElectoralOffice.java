@@ -6,13 +6,15 @@ import java.util.*;
  */
 
 public class regionalElectoralOffice {
-     int regionalElectoralOfficeID;
-     String regionName;
+    private int regionalElectoralOfficeID;
+     private String regionName;
 
 
     // Hashmap Regional Level 
     HashMap<DistrictElectoralOffice, Integer> votes = new HashMap<DistrictElectoralOffice, Integer>();
-    
+
+  
+
      regionalElectoralOffice(int regionalElectoralOfficeID, String regionName) {
 		this.regionalElectoralOfficeID = regionalElectoralOfficeID;
 		this.regionName = regionName;
@@ -44,7 +46,7 @@ public class regionalElectoralOffice {
    
     /**
      * Count method to count the number of votes in the region.
-     * @param regionn
+     * @param region
      * @return votes
      */
     public void regionalLevel(DistrictElectoralOffice region) {
@@ -65,7 +67,7 @@ public class regionalElectoralOffice {
         int maxValue = (Collections.max(votes.values()));
 
         int maxValueInMap=(Collections.max(votes.values()));  // This will return max value in the Hashmap
-        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName);
+        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName, regionName);
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==maxValueInMap) {
                 winner = entry.getKey();     // Print the key with max value
@@ -79,7 +81,7 @@ public class regionalElectoralOffice {
         int minValue = (Collections.max(votes.values()));
 
         int minValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
-        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName);
+        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName, regionName);
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==minValueInMap) {
                 last = entry.getKey();     // Print the key with max value
