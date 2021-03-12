@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class DistrictElectoralOffice {
 	private int districtID;
@@ -5,10 +6,9 @@ public class DistrictElectoralOffice {
 	private String region;
 	
 	// constructor
-	public DistrictElectoralOffice(int districtID, String districtName, String region) {
+	public DistrictElectoralOffice(int districtID, String districtName) {
 		this.districtID = districtID;
 		this.districtName = districtName;
-		this.region = region;
 	}
 	
 	// accessor method
@@ -19,11 +19,10 @@ public class DistrictElectoralOffice {
 	public String getdistrictName() {
 		return this.districtName;
 	}
-
+	
 	public String getRegion(){
 		return this.region;
 	}
-
 	
 	// mutator method
 	@SuppressWarnings("unused")
@@ -34,11 +33,65 @@ public class DistrictElectoralOffice {
 	private void setdistrictName(String pdistrictName){
 		this.districtName = pdistrictName;
 		}
-
+	
 	@SuppressWarnings("unused")
 	private void setRegion(String r){
 		this.region = r;
 	}
+	
+	/*
+	 * the count methods
+	 */
+	
+	public void districtLevel(DistrictElectoralOffice district) {
+        if (votes.containsKey(district)) {
+            int curVotes = votes.get(district);
+            votes.replace(district, curVotes+1);
+        } else {
+            votes.put(district, 1);
+        }
+    }public void Counter(){
+     for ( Object e:votes.keySet() ){
+         System.out.println(votes.values());
+     }
+
+    }
+
+    public void maxCount() {
+        int maxValue = (Collections.max(votes.values()));
+        
+        // Return max value in the Hashmap
+        int maxValueInMap=(Collections.max(votes.values()));  
+        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, districtName);
+        // Iterate through hashmap
+        for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  
+            if (entry.getValue()==maxValueInMap) {
+            	
+            	// Print the key with max value
+                winner = entry.getKey();    
+            }
+        }
+
+        System.out.println("Winner: " + winner.getdistrictName() + ":" + votes.get(winner) + " votes");
+
+    }
+    public void minCount() {
+        int minValue = (Collections.max(votes.values()));
+
+        // Return max value in the Hashmap
+        int minValueInMap=(Collections.min(votes.values()));  
+        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, districtName);
+        // Iterate through hashmap
+        for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  
+            if (entry.getValue()==minValueInMap) {
+            	// Print the key with max value
+                last = entry.getKey();     
+            }
+        }
+
+        System.out.println("Last place: " + last.getdistrictName() + ":" + votes.get(last) + " votes");
+
+    }
 	
 	// toString
 	public String toString() {
