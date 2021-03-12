@@ -1,11 +1,10 @@
-<<<<<<< HEAD:BiometricVotersSystem/src/DistrictElectoralOffice.java
+package BiometricVotersSystem.src;
+
 import java.util.*;
 
-=======
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.Map.Entry;
->>>>>>> c172357dea33f6cb13deb8eccbcdc56fcf0b0dc2:DistrictElectoralOffice.java
 
 public class DistrictElectoralOffice {
 	private int districtID;
