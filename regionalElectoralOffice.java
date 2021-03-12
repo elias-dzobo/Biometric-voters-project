@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -67,7 +68,7 @@ public class regionalElectoralOffice {
         int maxValue = (Collections.max(votes.values()));
 
         int maxValueInMap=(Collections.max(votes.values()));  // This will return max value in the Hashmap
-        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName, regionName);
+        DistrictElectoralOffice winner = new DistrictElectoralOffice(maxValueInMap, regionName);
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==maxValueInMap) {
                 winner = entry.getKey();     // Print the key with max value
@@ -81,7 +82,7 @@ public class regionalElectoralOffice {
         int minValue = (Collections.max(votes.values()));
 
         int minValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
-        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName, regionName);
+        DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, regionName);
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==minValueInMap) {
                 last = entry.getKey();     // Print the key with max value
@@ -99,5 +100,19 @@ public class regionalElectoralOffice {
     public String toString(){
         return "[ Regional Electoral ID: "+getRegionalElectoralOfficeID()+ "Region Name: "+getRegionName()+ "]";  
     }
+    public void writeFile(){
+        PrintWriter pw=null;
+        try{
+            pw =  new PrintWriter("votes.txt");
+            for(Object e : votes.values()){
+                pw.println();
+            }
+            pw.close();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+         System.out.println("Printing completed");
+        }
     
 }
