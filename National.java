@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -5,7 +6,9 @@ import java.io.FileWriter;
 
 public class National extends regionalElectoralOffice {
     public String NationName;
+    
     File votenum= new File("votecount.txt");
+
     HashMap<regionalElectoralOffice, Integer> votes = new HashMap<regionalElectoralOffice, Integer> ();
 
     National (String NationName){
@@ -62,8 +65,10 @@ public class National extends regionalElectoralOffice {
             }
             catch(FileNotFoundException e){
                 System.out.println("File cannot be found");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }
+        } 
 
 
 
