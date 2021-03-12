@@ -13,8 +13,8 @@ public class Voter extends Person {
 
     }
 
-    Voter(int id, String regCenter){
-        super();
+    Voter(String name, int age, int id, String regCenter){
+        super(name, age);
         this.ID = id;
         this.regCenter = regCenter;
         hasVoted = false;
@@ -81,6 +81,14 @@ public class Voter extends Person {
             hasVoted = true; // chnages voting status
 
         }
+    }
+
+
+    public boolean equals(Voter v1) {
+        if (this.name == v1.name && this.age == v1.age && this.regCenter == v1.regCenter && this.ID == v1.ID ){
+            return true;
+        }
+        return false;
     }
 
     

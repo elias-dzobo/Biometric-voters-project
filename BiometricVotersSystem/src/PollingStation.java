@@ -95,4 +95,8 @@ class PollingStation {
         System.out.println("Last place: " + winner.getName() + ":" + votes.get(winner) + " votes");
 
     }
+
+    public void forwardResults(DistrictElectoralOffice d1) {
+        d1.collateResults(votes);
+    }
 }
