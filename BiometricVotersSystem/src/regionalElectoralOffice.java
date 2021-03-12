@@ -1,3 +1,5 @@
+package BiometricVotersSystem.src;
+
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -114,5 +116,7 @@ public class regionalElectoralOffice {
         }
          System.out.println("Printing completed");
         }
+    public void collateDistrictResults(HashMap<Candidate, Integer> results) {
+    }
     
 }
