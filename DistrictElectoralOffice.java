@@ -5,6 +5,7 @@ public class DistrictElectoralOffice {
 	private String districtName;
 	private String region;
 	
+	HashMap<PollingStation, Integer> votes = new HashMap<PollingStation, Integer> ();
 	// constructor
 	public DistrictElectoralOffice(int districtID, String districtName) {
 		this.districtID = districtID;
@@ -43,7 +44,7 @@ public class DistrictElectoralOffice {
 	 * the count methods
 	 */
 	
-	public void districtLevel(DistrictElectoralOffice district) {
+	public void districtLevel(PollingStation district) {
         if (votes.containsKey(district)) {
             int curVotes = votes.get(district);
             votes.replace(district, curVotes+1);
@@ -78,13 +79,13 @@ public class DistrictElectoralOffice {
     public void minCount() {
         int minValue = (Collections.max(votes.values()));
 
-        // Return max value in the Hashmap
+        // Return min value in the Hashmap
         int minValueInMap=(Collections.min(votes.values()));  
         DistrictElectoralOffice last = new DistrictElectoralOffice(minValueInMap, districtName);
         // Iterate through hashmap
         for (Map.Entry<DistrictElectoralOffice, Integer> entry : votes.entrySet()) {  
             if (entry.getValue()==minValueInMap) {
-            	// Print the key with max value
+            	// Print the key with min value
                 last = entry.getKey();     
             }
         }
