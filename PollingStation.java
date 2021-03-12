@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.*;
 
 class PollingStation {
@@ -63,11 +64,8 @@ class PollingStation {
     public void Counter(){
         System.out.println(votes);
     }
-
-
     public void maxCount() {
         int maxValue = (Collections.max(votes.values()));
-
         int maxValueInMap=(Collections.max(votes.values()));  // This will return max value in the Hashmap
         Candidate winner = new Candidate();
         for (Map.Entry<Candidate, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
@@ -84,15 +82,29 @@ class PollingStation {
     public void minCount() {
         int maxValue = (Collections.min(votes.values()));
 
-        int maxValueInMap=(Collections.min(votes.values()));  // This will return max value in the Hashmap
+        int maxValueInMap=(Collections.min(votes.values()));  // This will return min value in the Hashmap
         Candidate winner = new Candidate();
         for (Map.Entry<Candidate, Integer> entry : votes.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==maxValueInMap) {
-                winner = entry.getKey();     // Print the key with max value
+                winner = entry.getKey();     // Print the key with minvalue
             }
         }
 
         System.out.println("Last place: " + winner.getName() + ":" + votes.get(winner) + " votes");
 
     }
+    public void writeFile(){
+        PrintWriter pw=null;
+        try{
+            pw =  new PrintWriter("votes.txt");
+            for(Object e : votes.values()){
+                pw.println();
+            }
+            pw.close();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+         System.out.println("Printing completed");
+        }
 }
